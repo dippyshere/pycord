@@ -756,8 +756,9 @@ class ConnectionState:
                 self.store_raw_poll(poll_data, raw)
             self.dispatch("raw_message_edit", raw)
 
-        if "components" in data and self._view_store.is_message_tracked(raw.message_id):
-            self._view_store.update_from_message(raw.message_id, data["components"])
+        # dissy returns empty components now
+        # if "components" in data and self._view_store.is_message_tracked(raw.message_id):
+        #     self._view_store.update_from_message(raw.message_id, data["components"])
 
     def parse_message_reaction_add(self, data) -> None:
         emoji = data["emoji"]
